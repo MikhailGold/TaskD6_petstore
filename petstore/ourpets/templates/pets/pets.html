@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block extra_title %}- {{ current_animal.title|capfirst }} породы "{{ current_breed.breed }}" в нашем приюте.{% endblock extra_title %}
+
+{% block content %}
+    <h4>{{ current_animal.animaltype|capfirst }} породы "{{ current_breed.breed }}" в нашем приюте.</h4>
+    <h5>Выберите питомца для просмотра подробной информации:</h5><br>
+    <div class="d-flex flex-row justify-content-around">
+        {% for pet in pets %}
+            <div class="d-flex flex-column justify-content-center border align-items-center" style="height: 300px;">
+                <a href="/pets/detail/{{ pet.id }}">
+                    {% if  pet.petphoto %}
+                        <img src="{% thumbnail pet.petphoto 200x0 %}">
+                    {% else %}
+                    <span class="badge badge-light">Нет картинки</span>
+                        {% endif %}
+                </a>
+                {{ pet.nickname }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block extra_title %} - Виды животных в нашем приюте{% endblock extra_title %}
+
+{% block content %}
+    {% with animals.count as total_animals %}
+        <h4>Всего видов животных в приюте: {{ total_animals }}</h4>
+    {% endwith %}
+    <h5>В нашем приюте представлены следующие виды животных:</h5><br>
+    <div class="d-flex flex-row justify-content-around">
+        {% for animal in animals %}
+            <div class="d-flex flex-column justify-content-center border align-items-center" style="height: 300px; width: 200px">
+                <a href="/pets/{{ animal.animaltype_slug }}/">
+                    {% if animal.animalphoto %}
+                        <img src="{% thumbnail animal.animalphoto 200x0 %}">
+                    {% else %}
+                        <span class="badge badge-light">Нет картинки</span>
+                    {% endif %}
+                </a>
+                {{ animal.animaltype|capfirst }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

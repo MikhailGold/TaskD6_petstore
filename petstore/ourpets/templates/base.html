@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Приют для животных "У Масяни!" {% block extra_title %}{% endblock extra_title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block bootstrap_header %}
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    {% endblock bootstrap_header %}
+{% block extra_head %}
+{% endblock extra_head %}
+</head>
+<body>
+<div class="container border">
+<!-- Header -->
+<div class="row">
+    <div class="col border">
+     <!-- Nav menu -->
+        <a href="/pets/" class="btn btn-outline-primary btn-lg" role="button">Питомцы</a>
+        <a href="/about/" class="btn btn-outline-primary btn-lg" role="button">О нас</a>
+        <a href="/contact/" class="btn btn-outline-primary btn-lg" role="button">Контакты</a>
+     <!-- /Nav menu -->
+    </div>
+    <div class="col border">
+      <h5>Приют для животных "У Масяни!"</h5>
+    </div>
+  </div>
+<!-- /Header -->
+<!-- Main -->
+    {% block content %}
+    {% endblock content %}
+<!-- /Main -->
+<!-- Footer -->
+<div class="row">
+    <div class="col">&copy; 2020 Приют для животных "У Масяни!"</div>
+    <div class="col">
+        <a href="#">Facebook</a>
+        <a href="#">VKontakte</a>
+        <a href="#">Instagram</a>
+    </div>
+</div>
+<!-- /Footer -->
+</div>
+</body>
+</html>

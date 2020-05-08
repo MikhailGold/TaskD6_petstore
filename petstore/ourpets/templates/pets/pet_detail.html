@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block extra_title %}- Питомец по кличке {{ pet.nickname }}{% endblock extra_title %}
+
+{% block content %}
+    <h4>Питомец по кличке "{{ pet.nickname }}".</h4>
+    <div class="d-flex flex-row justify-content-start border">
+        <div class="p-2 border">
+            {% if  pet.photo %}
+                <a href="{{ pet.petphoto.url }}"><img src="{% thumbnail pet.petphoto 200x0 %}"><br>
+                Нажмите для увеличения</a>
+            {% else %}
+                <span class="badge badge-light">Нет картинки</span>
+            {% endif %}
+        </div>
+        <div class="p-2 border">
+            <p>Информация о питомце:<br>
+            Кличка: {{ pet.nickname }}<br>
+            Порода: {{ pet.breed.breed }}<br>
+            Возраст, лет: {{ pet.age }}<br>
+            Пол: {{ pet.pol }}<br>
+            {{ pet.description }}
+            </p>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,26 @@
+ 
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block extra_title %}- {{ current_animal|capfirst }} в нашем приюте.{% endblock extra_title %}
+
+{% block content %}
+    <h4>{{ current_animal.animaltype|capfirst }} в нашем приюте.</h4>
+    <h5>В нашем приюте представлены следующие породы:</h5><br>
+    <div class="d-flex flex-row justify-content-around">
+        {% for breed in breeds %}
+            <div class="d-flex flex-column justify-content-center border align-items-center" style="height: 300px;">
+                <a href="/pets/{{ current_animal.id }}/{{ breed.breed_slug }}/">
+                    {% if  breed.breedphoto %}
+                        <img src="{% thumbnail breed.breedphoto 200x0 %}">
+                    {% else %}
+                    <span class="badge badge-light">Нет картинки</span>
+                        {% endif %}
+                </a>
+                {{ breed.breed }}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block extra_title %} - Информация о приюте{% endblock extra_title %}
+
+{% block content %}
+    <div class="d-flex flex-row justify-content-start border">
+        <div class="col">
+            <h4>Информация о нашем приюте</h4>
+            <p>
+                Количество видов животных в нашем приюте: <b>{{ total_animals }}</b>.<br>
+                Количество пород животных в нашем приюте: <b>{{ total_breeds }}</b>.<br>
+                Количество различных животных в нашем приюте: <b>{{ total_pets }}</b>.<br>
+            </p>
+            <p>В нашем замечательном приюте содержатся различные животные, которые
+            с радостью обретут новых хозяев.<br>
+                Выбрать себе питомца можно в разделе
+            <a href="/pets/">питомцы</a>. Налетай, пока не разобрали!</p>
+        </div>
+    </div>
+{% endblock content %}
